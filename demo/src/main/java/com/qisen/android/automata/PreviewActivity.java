@@ -33,7 +33,7 @@ import com.qisen.android.nier.record.NierRecorder;
  *         Created on 09/04/2018.
  */
 
-public class RecordActivity extends Activity {
+public class PreviewActivity extends Activity {
 
   private NierRecorder recorder;
 
