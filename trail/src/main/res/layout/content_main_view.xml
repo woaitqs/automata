@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.baidu.android.trail.activity.MainViewActivity"
+    tools:showIn="@layout/app_bar_main_view">
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"/>
+
+    <ImageView
+        android:id="@+id/communication"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_communication_on"
+        android:scaleType="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/library"/>
+
+    <ImageView
+        android:id="@+id/library"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_library_off"
+        android:scaleType="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/communication"
+        app:layout_constraintRight_toLeftOf="@id/favorite"/>
+
+    <ImageView
+        android:id="@+id/favorite"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_favorite_off"
+        android:scaleType="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/library"
+        app:layout_constraintRight_toLeftOf="@id/error"
+        />
+
+    <ImageView
+        android:id="@+id/error"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_error_off"
+        android:scaleType="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/favorite"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

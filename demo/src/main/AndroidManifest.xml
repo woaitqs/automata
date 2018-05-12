@@ -1,25 +1,27 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.qisen.android.automata">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.qisen.android.automata"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round">
-
         <activity android:name=".EntranceActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>
+
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".HelloActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".PreviewActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".SplashActivity">
+        </activity>
     </application>
+
 </manifest>

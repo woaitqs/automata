@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">C 测试</string>
+    <string name="title_activity_main_view">MainViewActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_describ">冰冻三尺，非一日之寒</string>
+    <string name="action_settings">冰冻三尺，非一日之寒</string>
+</resources>
