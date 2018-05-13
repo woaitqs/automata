@@ -15,14 +15,19 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"/>
 
+    <View android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="#CCC"
+          app:layout_constraintBottom_toBottomOf="@id/fragment_container"/>
+
     <ImageView
         android:id="@+id/communication"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:src="@drawable/ic_communication_on"
         android:scaleType="center"
-        app:layout_constraintHorizontal_weight="1"
+        android:src="@drawable/ic_communication_on"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/library"/>
 
@@ -30,10 +35,10 @@
         android:id="@+id/library"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:src="@drawable/ic_library_off"
         android:scaleType="center"
-        app:layout_constraintHorizontal_weight="1"
+        android:src="@drawable/ic_library_off"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/communication"
         app:layout_constraintRight_toLeftOf="@id/favorite"/>
 
@@ -41,22 +46,22 @@
         android:id="@+id/favorite"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:src="@drawable/ic_favorite_off"
         android:scaleType="center"
-        app:layout_constraintHorizontal_weight="1"
+        android:src="@drawable/ic_favorite_off"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/library"
         app:layout_constraintRight_toLeftOf="@id/error"
-        />
+    />
 
     <ImageView
         android:id="@+id/error"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:src="@drawable/ic_error_off"
         android:scaleType="center"
-        app:layout_constraintHorizontal_weight="1"
+        android:src="@drawable/ic_error_off"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/favorite"
         app:layout_constraintRight_toRightOf="parent"/>
 

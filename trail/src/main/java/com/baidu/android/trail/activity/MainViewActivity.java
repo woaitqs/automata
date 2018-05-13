@@ -1,21 +1,21 @@
 package com.baidu.android.trail.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.baidu.android.trail.R;
 import com.baidu.android.trail.bean.Subject;
+import com.baidu.android.trail.function.FunctionDrawable;
+import com.baidu.android.trail.function.communication.CommunicationFragment;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
@@ -24,13 +24,52 @@ import cn.bmob.v3.listener.SaveListener;
 public class MainViewActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
+  private FunctionDrawable activeDrawable = FunctionDrawable.COMMUNICATION;
+  private FrameLayout fragmentContainer;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main_view);
 
-    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+    NavigationView navigationView = findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
+    fragmentContainer = findViewById(R.id.fragment_container);
+
+    initFunction();
+    activeFunction(activeDrawable);
+  }
+
+  private void initFunction() {
+    for (final FunctionDrawable drawable : FunctionDrawable.values()) {
+      ImageView imageView = findViewById(drawable.getIconId());
+      imageView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          if (drawable.equals(activeDrawable)) {
+            return;
+          }
+          activeFunction(drawable);
+          activeDrawable = drawable;
+        }
+      });
+    }
+  }
+
+  private void activeFunction(FunctionDrawable functionDrawable) {
+    for (FunctionDrawable drawable : FunctionDrawable.values()) {
+      ImageView imageView = findViewById(drawable.getIconId());
+      boolean isSelect = drawable.equals(functionDrawable);
+      imageView.setImageResource(isSelect
+          ? drawable.getActiveResId()
+          : drawable.getDefaultResId());
+      if (isSelect) {
+        getSupportFragmentManager()
+            .beginTransaction()
+            .replace(R.id.fragment_container, new CommunicationFragment())
+            .commit();
+      }
+    }
   }
 
   private void test() {
@@ -47,9 +86,9 @@ public class MainViewActivity extends AppCompatActivity
       @Override
       public void done(String objectId, BmobException e) {
         if (e == null) {
-          Toast.makeText(MainViewActivity.this,"success", Toast.LENGTH_LONG).show();
+          Toast.makeText(MainViewActivity.this, "success", Toast.LENGTH_LONG).show();
         } else {
-          Toast.makeText(MainViewActivity.this,"failed " + e.toString(), Toast.LENGTH_LONG).show();
+          Toast.makeText(MainViewActivity.this, "failed " + e.toString(), Toast.LENGTH_LONG).show();
         }
       }
     });
