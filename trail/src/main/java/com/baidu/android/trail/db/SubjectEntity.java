@@ -4,13 +4,14 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-@Entity(indices = {@Index("id")}, tableName = "subject")
+import com.baidu.android.trail.bean.Subject;
+
+@Entity(primaryKeys = {"question", "type"}, indices = {@Index("question")}, tableName = "subject")
 public class SubjectEntity {
 
-  @PrimaryKey(autoGenerate = true)
-  public int id;
-
+  @NonNull
   public String question;
 
   public String picture;
@@ -30,5 +31,18 @@ public class SubjectEntity {
   public String optionC;
   @ColumnInfo(name = "option_d")
   public String optionD;
+
+  public static SubjectEntity from(int type, Subject subject) {
+    SubjectEntity subjectEntity = new SubjectEntity();
+    subjectEntity.question = subject.getQuestion();
+    subjectEntity.picture = subject.getPicture();
+    subjectEntity.answer = subject.getAnswer();
+    subjectEntity.optionA = subject.getOptionA();
+    subjectEntity.optionB = subject.getOptionB();
+    subjectEntity.optionC = subject.getOptionC();
+    subjectEntity.optionD = subject.getOptionD();
+    subjectEntity.type = type;
+    return subjectEntity;
+  }
 
 }

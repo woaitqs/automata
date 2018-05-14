@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.baidu.android.trail.R;
 import com.baidu.android.trail.bean.Subject;
+import com.baidu.android.trail.fragment.CollectionFragment;
+import com.baidu.android.trail.fragment.DisplayFragment;
 import com.baidu.android.trail.fragment.QuestionFragment;
 import com.baidu.android.trail.fragment.TrackFragment;
 import com.baidu.android.trail.function.FunctionDrawable;
@@ -87,12 +89,12 @@ public class MainViewActivity extends AppCompatActivity
         return communicationFragment;
       case LIBRARY:
         if (libraryFragment == null) {
-          libraryFragment = new QuestionFragment();
+          libraryFragment = new DisplayFragment();
         }
         return libraryFragment;
       case FAVORITE:
         if (favoriteFragment == null) {
-          favoriteFragment = new Fragment();
+          favoriteFragment = new CollectionFragment();
         }
         return favoriteFragment;
       case ERROR:

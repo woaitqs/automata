@@ -1,10 +1,9 @@
 package com.baidu.android.trail.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,15 +40,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
   @Override
   public void onClick(View v) {
-    switch (v.getId()){
+    switch (v.getId()) {
       case R.id.btn_login:
-        if (!TextUtils.isEmpty(username.getText()) && !TextUtils.isEmpty(et_password.getText())){
-          Toast.makeText(LoginActivity.this,"登陆成功！",Toast.LENGTH_SHORT).show();
-          Intent intent = new Intent(LoginActivity.this,MainViewActivity.class);
+        if (!TextUtils.isEmpty(username.getText()) && !TextUtils.isEmpty(et_password.getText())) {
+          Toast.makeText(LoginActivity.this, "登陆成功！", Toast.LENGTH_SHORT).show();
+          Intent intent = new Intent(LoginActivity.this, MainViewActivity.class);
           startActivity(intent);
           finish();
-        }else
-          Toast.makeText(LoginActivity.this,"请输入用户名或密码",Toast.LENGTH_SHORT).show();
+        } else
+          Toast.makeText(LoginActivity.this, "请输入用户名或密码", Toast.LENGTH_SHORT).show();
         break;
     }
   }

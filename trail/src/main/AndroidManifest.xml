@@ -36,6 +36,9 @@
         <activity android:name=".activity.GuideActivity" android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name=".activity.TrackActivity" android:screenOrientation="portrait">
+        </activity>
+
         <activity
             android:name=".activity.MainViewActivity"
             android:screenOrientation="portrait"
