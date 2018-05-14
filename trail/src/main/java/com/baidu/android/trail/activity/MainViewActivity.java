@@ -2,6 +2,7 @@ package com.baidu.android.trail.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 
 import com.baidu.android.trail.R;
 import com.baidu.android.trail.bean.Subject;
+import com.baidu.android.trail.fragment.QuestionFragment;
+import com.baidu.android.trail.fragment.TrackFragment;
 import com.baidu.android.trail.function.FunctionDrawable;
 import com.baidu.android.trail.function.communication.CommunicationFragment;
 
@@ -26,6 +29,11 @@ public class MainViewActivity extends AppCompatActivity
 
   private FunctionDrawable activeDrawable = FunctionDrawable.COMMUNICATION;
   private FrameLayout fragmentContainer;
+
+  private Fragment communicationFragment;
+  private Fragment libraryFragment;
+  private Fragment favoriteFragment;
+  private Fragment errorFragment;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -63,38 +71,37 @@ public class MainViewActivity extends AppCompatActivity
       imageView.setImageResource(isSelect
           ? drawable.getActiveResId()
           : drawable.getDefaultResId());
-      if (isSelect) {
-        getSupportFragmentManager()
-            .beginTransaction()
-            .replace(R.id.fragment_container, new CommunicationFragment())
-            .commit();
-      }
     }
+    getSupportFragmentManager()
+        .beginTransaction()
+        .replace(R.id.fragment_container, getFragment(functionDrawable))
+        .commit();
   }
 
-  private void test() {
-    Subject subject = new Subject();
-    subject.setQuestion("鹦鹉有几个嘴？");
-    subject.setChoiceNum(4);
-    subject.setType(1);
-    subject.setChoiceA("1");
-    subject.setChoiceB("2");
-    subject.setChoiceC("3");
-    subject.setChoiceD("4");
-
-    subject.save(new SaveListener<String>() {
-      @Override
-      public void done(String objectId, BmobException e) {
-        if (e == null) {
-          Toast.makeText(MainViewActivity.this, "success", Toast.LENGTH_LONG).show();
-        } else {
-          Toast.makeText(MainViewActivity.this, "failed " + e.toString(), Toast.LENGTH_LONG).show();
+  private Fragment getFragment(FunctionDrawable functionDrawable) {
+    switch (functionDrawable) {
+      case COMMUNICATION:
+        if (communicationFragment == null) {
+          communicationFragment = new CommunicationFragment();
         }
-      }
-    });
-
-    BmobQuery<Subject> query = new BmobQuery<>();
-
+        return communicationFragment;
+      case LIBRARY:
+        if (libraryFragment == null) {
+          libraryFragment = new QuestionFragment();
+        }
+        return libraryFragment;
+      case FAVORITE:
+        if (favoriteFragment == null) {
+          favoriteFragment = new Fragment();
+        }
+        return favoriteFragment;
+      case ERROR:
+        if (errorFragment == null) {
+          errorFragment = new Fragment();
+        }
+        return errorFragment;
+    }
+    return null;
   }
 
   @Override

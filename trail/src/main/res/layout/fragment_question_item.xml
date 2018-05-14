@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="50dp"
+        android:textSize="17sp"
+        android:textColor="#333"
+        tools:text="下面哪个不是 Java 的关键字？纯考Java基础功底,老手们就不用进来了,免得笑话我们这些未出校门的孩纸们,但是...这么说RandomAccessFile肯定可以达到题目的要求"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="25dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/question"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/optionA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="A: android:layout_height"
+        android:layout_margin="25dp"
+        android:textSize="16sp"
+        android:textColor="#555"
+        app:layout_constraintTop_toBottomOf="@id/picture"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/optionB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="B: android:layout_height"
+        android:layout_margin="25dp"
+        android:textSize="16sp"
+        android:textColor="#555"
+        app:layout_constraintTop_toBottomOf="@id/optionA"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/optionC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="C: android:layout_height"
+        android:layout_margin="25dp"
+        android:textSize="16sp"
+        android:textColor="#555"
+        app:layout_constraintTop_toBottomOf="@id/optionB"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/optionD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="D: android:layout_height"
+        android:layout_margin="25dp"
+        android:textSize="16sp"
+        android:textColor="#555"
+        app:layout_constraintTop_toBottomOf="@id/optionC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确认"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

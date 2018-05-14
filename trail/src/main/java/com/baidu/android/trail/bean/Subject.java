@@ -1,74 +1,50 @@
 package com.baidu.android.trail.bean;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 
-/**
- * @author qisen (tangqisen@wandoujia.com)
- */
+public class Subject extends BmobObject implements Serializable {
 
-public class Subject extends BmobObject {
+  private static final long serialVersionUID = -4688817163385967887L;
 
   private String question;
-  private int choiceNum;
-  private int type;
-  private String choiceA;
-  private String choiceB;
-  private String choiceC;
-  private String choiceD;
+
+  // 配图
+  private String picture;
+
+  private int answer;
+
+  private String optionA;
+  private String optionB;
+  private String optionC;
+  private String optionD;
 
   public String getQuestion() {
     return question;
   }
 
-  public void setQuestion(String question) {
-    this.question = question;
+  public String getPicture() {
+    return picture;
   }
 
-  public int getChoiceNum() {
-    return choiceNum;
+  public int getAnswer() {
+    return answer;
   }
 
-  public void setChoiceNum(int choiceNum) {
-    this.choiceNum = choiceNum;
+  public String getOptionA() {
+    return optionA;
   }
 
-  public int getType() {
-    return type;
+  public String getOptionB() {
+    return optionB;
   }
 
-  public void setType(int type) {
-    this.type = type;
+  public String getOptionC() {
+    return optionC;
   }
 
-  public String getChoiceA() {
-    return choiceA;
-  }
-
-  public void setChoiceA(String choiceA) {
-    this.choiceA = choiceA;
-  }
-
-  public String getChoiceB() {
-    return choiceB;
-  }
-
-  public void setChoiceB(String choiceB) {
-    this.choiceB = choiceB;
-  }
-
-  public String getChoiceC() {
-    return choiceC;
-  }
-
-  public void setChoiceC(String choiceC) {
-    this.choiceC = choiceC;
-  }
-
-  public String getChoiceD() {
-    return choiceD;
-  }
-
-  public void setChoiceD(String choiceD) {
-    this.choiceD = choiceD;
+  public String getOptionD() {
+    return optionD;
   }
 }
