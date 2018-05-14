@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     switch (v.getId()){
       case R.id.btn_login:
         if (!TextUtils.isEmpty(username.getText()) && !TextUtils.isEmpty(et_password.getText())){
+          Toast.makeText(LoginActivity.this,"登陆成功！",Toast.LENGTH_SHORT).show();
           Intent intent = new Intent(LoginActivity.this,MainViewActivity.class);
           startActivity(intent);
           finish();
