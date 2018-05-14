@@ -20,6 +20,34 @@ public class Subject extends BmobObject implements Serializable {
   private String optionC;
   private String optionD;
 
+  public void setQuestion(String question) {
+    this.question = question;
+  }
+
+  public void setPicture(String picture) {
+    this.picture = picture;
+  }
+
+  public void setAnswer(int answer) {
+    this.answer = answer;
+  }
+
+  public void setOptionA(String optionA) {
+    this.optionA = optionA;
+  }
+
+  public void setOptionB(String optionB) {
+    this.optionB = optionB;
+  }
+
+  public void setOptionC(String optionC) {
+    this.optionC = optionC;
+  }
+
+  public void setOptionD(String optionD) {
+    this.optionD = optionD;
+  }
+
   public String getQuestion() {
     return question;
   }

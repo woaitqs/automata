@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.baidu.android.trail.R;
 import com.baidu.android.trail.bean.Subject;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class QuestionFragment extends Fragment {
 
@@ -33,6 +35,15 @@ public class QuestionFragment extends Fragment {
     optionB = view.findViewById(R.id.optionB);
     optionC = view.findViewById(R.id.optionC);
     optionD = view.findViewById(R.id.optionD);
+
+    subject = new Subject();
+    subject.setQuestion("Question is what ?");
+    subject.setOptionA("A: setOptionAsetOptionA");
+    subject.setOptionB("B: setOptionA");
+    subject.setOptionC("C: setOptionAsetOptionA");
+    subject.setOptionD("D: setOptionAsetOptionAsetOptionA");
+    subject.setAnswer(1);
+    applySubject(subject);
   }
 
   @Nullable
@@ -45,8 +56,20 @@ public class QuestionFragment extends Fragment {
 
   private void applySubject(Subject subject) {
     question.setText(subject.getQuestion());
-    if (TextUtils.isEmpty(subject.getPicture())) {
-
+    boolean hasPicture = TextUtils.isEmpty(subject.getPicture());
+    picture.setVisibility(hasPicture ? View.VISIBLE : View.GONE);
+    if (hasPicture) {
+      RequestOptions requestOptions =
+          new RequestOptions().centerCrop().placeholder(R.color.image_default);
+      Glide.with(this).load(subject.getPicture()).apply(requestOptions).into(picture);
+    }
+    optionA.setText(subject.getOptionA());
+    optionB.setText(subject.getOptionB());
+    if (!TextUtils.isEmpty(subject.getOptionC())) {
+      optionC.setText(subject.getOptionC());
+    }
+    if (!TextUtils.isEmpty(subject.getOptionD())) {
+      optionD.setText(subject.getOptionD());
     }
   }
 }
