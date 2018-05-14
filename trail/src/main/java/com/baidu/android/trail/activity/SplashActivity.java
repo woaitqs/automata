@@ -24,12 +24,12 @@ public class SplashActivity extends AppCompatActivity {
     runnable = new Runnable() {
       @Override
       public void run() {
-        Intent intent = new Intent(SplashActivity.this,MainViewActivity.class);
+        Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
         startActivity(intent);
         finish();
       }
     };
-   handler.postDelayed(runnable,2000);
+   handler.postDelayed(runnable,1500);
   }
 
   @Override
