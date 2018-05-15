@@ -41,7 +41,8 @@ public class GuideActivity extends AppCompatActivity {
 
     @Override
     public Fragment getItem(int position) {
-      return GuidePicFragment.newInstance(guideDrawbles.get(position));
+      return GuidePicFragment.newInstance(guideDrawbles.get(position),
+          position == guideDrawbles.size() - 1);
     }
 
     @Override

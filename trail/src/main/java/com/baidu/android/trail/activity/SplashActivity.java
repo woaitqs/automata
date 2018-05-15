@@ -11,6 +11,7 @@ public class SplashActivity extends AppCompatActivity {
 
   private Handler handler;
   private Runnable runnable;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -24,12 +25,12 @@ public class SplashActivity extends AppCompatActivity {
     runnable = new Runnable() {
       @Override
       public void run() {
-        Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
+        Intent intent = new Intent(SplashActivity.this, GuideActivity.class);
         startActivity(intent);
         finish();
       }
     };
-   handler.postDelayed(runnable,1500);
+    handler.postDelayed(runnable, 1500);
   }
 
   @Override
