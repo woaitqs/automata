@@ -38,6 +38,8 @@
 
         <activity android:name=".activity.TrackActivity" android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".activity.DetailActivity" android:screenOrientation="portrait">
+        </activity>
 
         <activity
             android:name=".activity.MainViewActivity"

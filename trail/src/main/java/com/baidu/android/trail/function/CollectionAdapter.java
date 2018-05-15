@@ -7,15 +7,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.baidu.android.trail.R;
+import com.baidu.android.trail.activity.DetailActivity;
+import com.baidu.android.trail.bean.Subject;
+import com.baidu.android.trail.db.SubjectEntity;
 
 import java.util.List;
 
 
 public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.ItemViewHolder> {
 
-  private List<String> questions;
+  private List<Subject> questions;
 
-  public void setQuestions(List<String> questions) {
+  public void setQuestions(List<Subject> questions) {
     this.questions = questions;
     notifyDataSetChanged();
   }
@@ -29,8 +32,14 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.It
   }
 
   @Override
-  public void onBindViewHolder(ItemViewHolder holder, int position) {
-    holder.titleView.setText(questions.get(position));
+  public void onBindViewHolder(ItemViewHolder holder, final int position) {
+    holder.titleView.setText(questions.get(position).getQuestion());
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        DetailActivity.launch(v.getContext(), questions.get(position));
+      }
+    });
   }
 
   @Override

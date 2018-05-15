@@ -6,31 +6,30 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.baidu.android.trail.R;
 import com.baidu.android.trail.bean.Subject;
 import com.baidu.android.trail.fragment.CollectionFragment;
 import com.baidu.android.trail.fragment.DisplayFragment;
-import com.baidu.android.trail.fragment.QuestionFragment;
-import com.baidu.android.trail.fragment.TrackFragment;
 import com.baidu.android.trail.function.FunctionDrawable;
 import com.baidu.android.trail.function.communication.CommunicationFragment;
 
+import java.util.List;
+
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 public class MainViewActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
   private FunctionDrawable activeDrawable = FunctionDrawable.COMMUNICATION;
-  private FrameLayout fragmentContainer;
 
   private Fragment communicationFragment;
   private Fragment libraryFragment;
@@ -44,7 +43,6 @@ public class MainViewActivity extends AppCompatActivity
 
     NavigationView navigationView = findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
-    fragmentContainer = findViewById(R.id.fragment_container);
 
     initFunction();
     activeFunction(activeDrawable);
@@ -94,12 +92,12 @@ public class MainViewActivity extends AppCompatActivity
         return libraryFragment;
       case FAVORITE:
         if (favoriteFragment == null) {
-          favoriteFragment = new CollectionFragment();
+          favoriteFragment = CollectionFragment.newInstance(1);
         }
         return favoriteFragment;
       case ERROR:
         if (errorFragment == null) {
-          errorFragment = new Fragment();
+          errorFragment = CollectionFragment.newInstance(2);
         }
         return errorFragment;
     }
@@ -157,4 +155,41 @@ public class MainViewActivity extends AppCompatActivity
     drawer.closeDrawer(GravityCompat.START);
     return true;
   }
+
+  public static void testQuery() {
+    BmobQuery<Subject> query = new BmobQuery<>();
+    query.setLimit(20).findObjects(new FindListener<Subject>() {
+      @Override
+      public void done(List<Subject> list, BmobException e) {
+        if (e != null) {
+          e.printStackTrace();
+          Log.e("tango","failed! ");
+        } else {
+          Log.e("tango", list.size() + "");
+        }
+      }
+    });
+  }
+
+  public static void testUpload() {
+    Subject subject1 = new Subject();
+    subject1.setQuestion("在Java中，负责对字节代码解释执行的是？");
+    subject1.setOptionA("A: 应用服务器");
+    subject1.setOptionB("B: 虚拟机");
+    subject1.setOptionC("C: 垃圾回收器");
+    subject1.setOptionD("D: 编译器");
+    subject1.setPicture("https://www.w3schools.in/wp-content/uploads/2014/08/Diagram-of-JVM.png");
+    subject1.setAnswer(2);
+    subject1.save(new SaveListener<String>() {
+      @Override
+      public void done(String s, BmobException e) {
+        if (e == null) {
+          Log.e("tango","success " + s);
+        } else {
+          Log.e("tango","failed! ");
+        }
+      }
+    });
+  }
+
 }

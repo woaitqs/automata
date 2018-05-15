@@ -45,11 +45,12 @@ public class QuestionFragment extends Fragment {
     void onConfirm(Subject subject, int selectValue);
   }
 
-  public static QuestionFragment newInstance(Subject subject, boolean isLastOne) {
+  public static QuestionFragment newInstance(Subject subject, boolean isLastOne, boolean onlyView) {
     QuestionFragment fragment = new QuestionFragment();
     Bundle bundle = new Bundle();
     bundle.putBoolean("last", isLastOne);
     bundle.putSerializable("subject", subject);
+    bundle.putBoolean("onlyView", onlyView);
     fragment.setArguments(bundle);
     return fragment;
   }
@@ -99,6 +100,10 @@ public class QuestionFragment extends Fragment {
     optionB.setOnCheckedChangeListener(changeListener);
     optionC.setOnCheckedChangeListener(changeListener);
     optionD.setOnCheckedChangeListener(changeListener);
+
+    if (getArguments().getBoolean("onlyView")) {
+      confirm.setVisibility(View.GONE);
+    }
     confirm.setText(isLastOne ? "提交本次测试" : "下一题");
     confirm.setOnClickListener(new View.OnClickListener() {
       @Override

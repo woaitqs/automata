@@ -15,7 +15,7 @@ public class TrailApp extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
-    Bmob.initialize(this, "65b91c220262f63939f59aaa147622ae");
+    Bmob.initialize(this, "bc00ae86b74fa4fdb0abf5e014a8ffce");
 
     subjectDB =
         Room.databaseBuilder(this, SubjectDB.class, "subject_db").build();

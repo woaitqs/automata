@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">C 测试</string>
+    <string name="app_name">乐学C语言</string>
     <string name="title_activity_main_view">MainViewActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -7,4 +7,7 @@
 
     <string name="action_describ">冰冻三尺，非一日之寒</string>
     <string name="action_settings">冰冻三尺，非一日之寒</string>
+
+    <string name="test_result">正确：%d 题，错误：%d 题\n正确率为 %s，再接再厉哦！</string>
+
 </resources>

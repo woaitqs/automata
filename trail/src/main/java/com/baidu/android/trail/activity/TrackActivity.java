@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.baidu.android.trail.WorkThreadPool;
 import com.baidu.android.trail.bean.Subject;
 import com.baidu.android.trail.db.SubjectEntity;
 import com.baidu.android.trail.fragment.QuestionFragment;
+import com.baidu.android.trail.fragment.ResultFragment;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -81,7 +83,7 @@ public class TrackActivity extends AppCompatActivity {
   private void displayQuestion(final int position) {
     QuestionFragment questionFragment =
         QuestionFragment.newInstance(
-            subjects.get(position), position == subjects.size() - 1);
+            subjects.get(position), position == subjects.size() - 1, false);
     getSupportFragmentManager()
         .beginTransaction()
         .replace(R.id.fragment_container, questionFragment)
@@ -104,7 +106,12 @@ public class TrackActivity extends AppCompatActivity {
         progressNum++;
         boolean finish = position == subjects.size() - 1;
         if (finish) {
-          finish();
+          getSupportFragmentManager()
+              .beginTransaction()
+              .replace(R.id.fragment_container,
+                  ResultFragment.newInstance(correctNum, wrongNum, totalNum))
+              .commit();
+          favCheckBox.setVisibility(View.GONE);
         } else {
           displayQuestion(position + 1);
         }
