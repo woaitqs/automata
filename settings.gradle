@@ -1,1 +1,1 @@
-include ':demo', ':nier', ':trail'
+include ':demo', ':nier'

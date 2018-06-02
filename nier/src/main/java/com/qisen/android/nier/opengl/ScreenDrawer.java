@@ -64,14 +64,14 @@ public class ScreenDrawer {
 
   private final int vertexStride = COORDS_PER_VERTEX * 4; // 4 bytes per vertex
 
-  static float squareCoords[] = {
+  private static float squareCoords[] = {
       -1.0f, 1.0f,
       -1.0f, -1.0f,
       1.0f, -1.0f,
       1.0f, 1.0f,
   };
 
-  static float textureVertices[] = {
+  private static float textureVertices[] = {
       0.0f, 1.0f,
       1.0f, 1.0f,
       1.0f, 0.0f,
